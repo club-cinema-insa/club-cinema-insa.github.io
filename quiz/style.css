@@ -61,11 +61,10 @@ body {
   position: relative;
   width: 100%;
   padding: 32px 0 28px;
+  margin-bottom: 3vh;
   text-align: center;
   background: linear-gradient(135deg, #2A1B1C 0%, #B72820 60%, #C9392E 100%);
   color: var(--header-text);
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -97,12 +96,11 @@ body {
 .logo-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 12px;
 }
 
 .logo {
-  max-width: 120px;
-  width: 30vw;
+  max-width: 60px;
+  width: 10vw;
   height: auto;
 }
 
@@ -127,9 +125,11 @@ body {
 }
 
 .quiz-card {
-  width: 100%;
-  margin-top: -10px;
-  background: var(--color-card);
+  width: 80%;
+  margin-top: 2vh;
+  background: color-mix(in srgb, var(--color-card), transparent 75%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Pour Safari */
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
@@ -211,7 +211,7 @@ body.theme-dark .btn.outline {
   display: flex;
   gap: 10px;
   align-items: baseline;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: var(--text-strong);
 }
 
@@ -329,10 +329,20 @@ body.theme-dark .choice.selected {
 }
 
 .feedback {
-  margin-top: 12px;
-  color: var(--text-strong);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px; /* --- AJOUT ICI : Espace entre les boutons --- */
   text-align: center;
-  min-height: 20px;
+  color: var(--text-strong);
+  transition: all 0.3s ease;
+}
+
+/* Optionnel : Si tu veux que le bouton soit un peu plus grand ici */
+.feedback .btn {
+  padding: 14px 28px;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .popup {
@@ -445,4 +455,385 @@ body.theme-dark .choice.selected {
   .controls {
     gap: 10px;
   }
+}
+
+/* --- NOUVEAU SYSTÈME D'ANIMATION (HALO & RIPPLE) --- */
+
+.choice {
+  position: relative;
+  /* Nécessaire pour contenir le "Halle" et le "Ripple" à l'intérieur des bords arrondis */
+  overflow: hidden; 
+  background: var(--color-card); /* Fond par défaut */
+  border: 2px solid transparent; /* Bordure transparente pour laisser voir le halo */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1; /* Pour gérer l'empilement */
+}
+
+
+/* --- EFFET 3 : POP OUT & DISPARITION (FIN) --- */
+
+.choice.animate-popout {
+  /* On utilise l'animation exacte de ton exemple */
+  animation: popDisappear 0.75s ease forwards;
+  /* On s'assure que le bouton ne reçoit plus d'événements souris pendant l'anim */
+  pointer-events: none; 
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+@keyframes popDisappear {
+  0% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: scale(1.02); /* Le "Pop" vers l'avant */
+    opacity: 0.8; 
+  }
+  100% { 
+    transform: scale(0); /* Disparition totale */
+    opacity: 0; 
+  }
+}
+
+/* GESTION DE LA CARTE GLOBALE */
+
+/* Les autres choix s'effacent doucement quand l'un 'pop' */
+.card.fade-siblings .choice:not(.animate-popout) {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+/* --- ANIMATION DE SORTIE (FADE OUT) --- */
+
+.card.card-fade-out {
+  /* On remplace la transition par une animation pour surcharger le fade-in */
+  animation: cardExit 0.5s ease forwards;
+  pointer-events: none; /* Empêche de recliquer pendant la sortie */
+}
+
+@keyframes cardExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95); /* Monte un peu en disparaissant */
+  }
+}
+
+/* --- GESTION DE L'AFFICHAGE ET ANIMATION --- */
+
+/* 1. Force la carte à disparaître complètement du flux */
+.card.hidden-card {
+  display: none !important;
+}
+
+/* 2. Animation d'entrée (On ne touche pas au display ici) */
+.card.card-fade-in {
+  animation: cardEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cardEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- CARTE DE DÉCOMPTE & RÉSULTATS --- */
+
+.card.countdown-card {
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Important pour que le SVG ne dépasse pas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+/* Texte "Résultat dans" */
+.countdown-label {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-strong);
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Le gros chiffre (3... 2... 1...) */
+.countdown-number {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  animation: pulseNumber 1s infinite;
+}
+
+@keyframes pulseNumber {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- ANIMATION DE BORDURE (SVG) --- */
+.countdown-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 14px; /* Doit matcher le border-radius de .card */
+}
+
+.timer-rect {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 6; /* Épaisseur de la bordure qui se remplit */
+  stroke-linecap: round;
+  /* L'animation se fera via JS ou CSS avec pathLength */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: fillBorder 3s linear forwards;
+}
+
+@keyframes fillBorder {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- ÉCRAN DE SCORE FINAL --- */
+.score-display {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--color-bg);
+}
+
+.score-details {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  color: var(--color-bg);
+}
+
+/* --- ÉTAT FINAL DE LA CARTE (REMPLISSAGE CIRCULAIRE) --- */
+
+.card.countdown-card {
+  position: relative;
+  overflow: hidden; /* CRUCIAL : empêche le cercle de dépasser les bords arrondis */
+  z-index: 1; /* Crée un contexte d'empilement */
+  transition: border-color 0.4s ease; /* On ne transitionne plus le background ici */
+}
+
+/* Création du cercle caché au centre */
+.card.countdown-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* On crée un carré parfait centré */
+  width: 100%; 
+  padding-bottom: 100%; /* Astuce CSS pour garder un ratio 1:1 */
+  border-radius: 50%;
+  background: var(--color-primary);
+  
+  /* État initial : centré et tout petit (invisible) */
+  transform: translate(-50%, -50%) scale(0);
+  
+  /* L'animation sera fluide et rapide au début */
+  transition: transform 1.2s ease-in-out;
+  z-index: -1; /* Se place DERRIÈRE le texte */
+}
+
+/* L'état "Rempli" déclenché par le JS */
+.card.countdown-card.card-filled {
+  border-color: var(--color-primary);
+  /* Pas de background-color ici, c'est le cercle qui le fait */
+}
+
+/* Quand la classe est là, le cercle grandit x2.5 pour couvrir toute la carte */
+.card.countdown-card.card-filled::before {
+  transform: translate(-50%, -50%) scale(2.5);
+}
+
+/* Gestion du texte et SVG comme avant */
+.card.countdown-card .countdown-content {
+  position: relative;
+  z-index: 2; /* S'assure que le texte reste au-dessus du cercle rouge */
+}
+
+.card-filled .countdown-label,
+.card-filled .score-display,
+.card-filled .score-details {
+  color: #ffffff !important;
+  transition: color 0.3s ease 0.1s; /* Petit délai pour que le texte change quand le rouge arrive */
+}
+
+.card-filled .countdown-svg {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* --- CARTES DE RÉSULTATS (CORRECTION) --- */
+
+.result-card {
+  background: var(--color-card-soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px; /* Espacement entre les cartes */
+  animation: fadeIn 0.5s ease;
+}
+
+.result-question {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+/* Conteneur des lignes de réponse */
+.result-answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Une ligne de réponse (boîte) */
+.answer-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+
+/* Style pour une réponse JUSTE (verte) */
+.answer-row.correct {
+  background-color: color-mix(in srgb, var(--color-accent), transparent 70%);
+  border-color: var(--color-accent);
+  color: color-mix(in srgb, var(--color-accent), black 50%);
+}
+
+/* Style pour une réponse FAUSSE (rouge) */
+.answer-row.incorrect {
+  background-color: var(--danger-soft);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+  opacity: 0.9;
+}
+
+/* Adaptation Mode Sombre */
+body.theme-dark .answer-row.correct {
+  color: #ccebd0;
+}
+body.theme-dark .answer-row.incorrect {
+  color: #ffccc7;
+}
+
+/* Style des icônes SVG */
+.answer-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0; /* Empêche l'icône de s'écraser */
+}
+
+.answer-icon.check path {
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+.answer-icon.cross path {
+  stroke: currentColor;
+  stroke-width: 3;
+}
+
+/* --- ÉCRAN DE SÉLECTION DE DIFFICULTÉ --- */
+
+.difficulty-container {
+  display: grid;
+  gap: 16px;
+  animation: fadeIn 0.5s ease;
+}
+
+.difficulty-card {
+  background: var(--color-card-soft);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.difficulty-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  background: var(--surface-highlight);
+}
+
+.difficulty-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.difficulty-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+body.theme-dark .difficulty-card p {
+  color: var(--color-text);
+}
+
+/* Petites touches de couleur selon le niveau */
+.diff-1:hover { 
+  border-color: var(--success);
+  background-color: color-mix(in srgb, var(--success), transparent 70%);; 
+}
+
+.diff-2:hover { 
+  border-color: var(--color-accent-2); 
+  background-color: color-mix(in srgb, var(--color-accent-2), transparent 70%);; 
+}
+
+.diff-3:hover { 
+  border-color: var(--color-primary); 
+  background-color: color-mix(in srgb, var(--color-primary), transparent 70%);; 
+}
+
+/* Titre de la sélection de difficulté */
+.difficulty-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--color-primary); /* Ou var(--text-strong) selon tes goûts */
+  margin-bottom: 8px;
+    margin-top: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: fadeIn 0.5s ease;
 }
