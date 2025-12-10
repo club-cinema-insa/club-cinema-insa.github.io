@@ -1,30 +1,35 @@
 [
   {
     "type": "text",
+    "difficulty": 1,
     "question": "De quel film vient la réplique : « Je suis ton père » ?",
     "answer": "Star Wars V",
     "choices": ["Star Wars IV", "Star Wars V", "Star Wars VI", "Rogue One"]
   },
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film entend-on la réplique : « Hasta la vista, baby » ?",
     "answer": "Terminator 2",
     "choices": ["Terminator", "Terminator 2", "Predator", "Robocop"]
   },
   {
     "type": "text",
-    "question": "Dans quel film dit-on : « Pourquoi si sérieux ? »",
+    "difficulty": 2,
+    "question": "Dans quel film dit-on : « Why so serious »",
     "answer": "The Dark Knight",
     "choices": ["Joker", "The Dark Knight", "Batman Begins", "Suicide Squad"]
   },
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel réalisateur est connu pour ses plans longs et millimétrés dans 'Inception' ?",
     "answer": "Christopher Nolan",
     "choices": ["Steven Spielberg", "Christopher Nolan", "James Cameron", "Denis Villeneuve"]
   },
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film commence par la chanson 'Circle of Life' ?",
     "answer": "Le Roi Lion",
     "choices": ["Le Roi Lion", "Tarzan", "La Petite Sirène", "Mulan"]
@@ -32,6 +37,7 @@
 
   {
     "type": "image",
+    "difficulty": 1,
     "question": "De quel film cette image provient-elle ?",
     "image": "assets/images/jaws.webp",
     "answer": "Les Dents de la Mer",
@@ -39,6 +45,7 @@
   },
   {
     "type": "image",
+    "difficulty": 2,
     "question": "Quel film est représenté par ce plan iconique ?",
     "image": "assets/images/pulpfiction.jpeg",
     "answer": "Pulp Fiction",
@@ -46,6 +53,7 @@
   },
   {
     "type": "image",
+    "difficulty": 3,
     "question": "Reconnaissez ce film à son image :",
     "image": "assets/images/shawshank.jpg",
     "answer": "Les Évadés",
@@ -54,6 +62,7 @@
 
   {
     "type": "audio",
+    "difficulty": 1,
     "question": "De quel film provient cette musique ?",
     "audio": "assets/audio/interstellar.mp3",
     "answer": "Interstellar",
@@ -61,6 +70,7 @@
   },
   {
     "type": "audio",
+    "difficulty": 1,
     "question": "Cette musique iconique est issue de :",
     "audio": "assets/audio/starwars.mp3",
     "answer": "Star Wars",
@@ -68,6 +78,7 @@
   },
   {
     "type": "audio",
+    "difficulty": 1,
     "question": "Cette musique iconique est issue de :",
     "audio": "assets/audio/jurassicpark.mp3",
     "answer": "Jurassic Park",
@@ -76,12 +87,14 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Quel acteur incarne le Joker dans The Dark Knight ?",
     "answer": "Heath Ledger",
     "choices": ["Joaquin Phoenix", "Heath Ledger", "Jared Leto", "Jack Nicholson"]
   },
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film met en scène un androïde nommé T-800 ?",
     "answer": "Terminator",
     "choices": ["Terminator", "Robocop", "Blade Runner", "Alien"]
@@ -89,6 +102,7 @@
   
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film peut-on entendre : « On va avoir besoin d’un plus gros bateau » ?",
     "answer": "Les Dents de la Mer",
     "choices": ["Les Dents de la Mer", "Titanic", "Master and Commander", "Le Cinquième Élément"]
@@ -96,6 +110,7 @@
   
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film trouve-t-on le personnage de Jack Dawson ?",
     "answer": "Titanic",
     "choices": ["Titanic", "Roméo + Juliette", "Le Loup de Wall Street", "Aviator"]
@@ -103,6 +118,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film a obtenu l’Oscar du meilleur film en 2020 ?",
     "answer": "Parasite",
     "choices": ["Parasite", "1917", "Joker", "Ford v Ferrari"]
@@ -110,6 +126,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film Simba apparaît-il ?",
     "answer": "Le Roi Lion",
     "choices": ["Le Roi Lion", "Madagascar", "Tarzan", "Zootopie"]
@@ -117,6 +134,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel réalisateur a créé Kill Bill ?",
     "answer": "Quentin Tarantino",
     "choices": ["Quentin Tarantino", "Robert Rodriguez", "Guy Ritchie", "Nolan"]
@@ -124,6 +142,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel est le premier film du MCU ?",
     "answer": "Iron Man",
     "choices": ["Iron Man", "Captain America", "Thor", "Hulk"]
@@ -131,6 +150,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film voit-on un Delorean voyager dans le temps ?",
     "answer": "Retour vers le futur",
     "choices": ["Retour vers le futur", "Terminator", "Looper", "Tenet"]
@@ -138,6 +158,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Quel film raconte l’histoire de Andy Dufresne ?",
     "answer": "Les Évadés",
     "choices": ["Les Évadés", "La Ligne Verte", "Shutter Island", "Le Parrain"]
@@ -145,6 +166,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film commence par un message d’alerte concernant Skynet ?",
     "answer": "Terminator",
     "choices": ["Terminator", "Matrix", "Blade Runner", "I, Robot"]
@@ -152,6 +174,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film contient le personnage Hannibal Lecter ?",
     "answer": "Le Silence des Agneaux",
     "choices": ["Le Silence des Agneaux", "Seven", "Psychose", "Shutter Island"]
@@ -159,6 +182,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film est connu pour la danse d’escalier du Joker ?",
     "answer": "Joker",
     "choices": ["Joker", "The Batman", "The Dark Knight", "Birds of Prey"]
@@ -166,6 +190,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film trouve-t-on la phrase « La vie, c’est comme une boîte de chocolats » ?",
     "answer": "Forrest Gump",
     "choices": ["Forrest Gump", "Rain Man", "Le Monde de Charlie", "Benjamin Button"]
@@ -173,6 +198,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film Bill Murray revit-il la même journée ?",
     "answer": "Un jour sans fin",
     "choices": ["Un jour sans fin", "Edge of Tomorrow", "Palm Springs", "Click"]
@@ -180,6 +206,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film met en scène un rêve dans un rêve ?",
     "answer": "Inception",
     "choices": ["Inception", "Interstellar", "Shutter Island", "Matrix"]
@@ -187,6 +214,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film rencontre-t-on Gandalf ?",
     "answer": "Le Seigneur des Anneaux",
     "choices": ["Le Seigneur des Anneaux", "Harry Potter", "Narnia", "Willow"]
@@ -194,6 +222,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film raconte l'histoire d'un clown tueur nommé Pennywise ?",
     "answer": "Ça",
     "choices": ["Ça", "Joker", "Scream", "Conjuring"]
@@ -201,6 +230,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film de Pixar met en scène un rat passionné de cuisine ?",
     "answer": "Ratatouille",
     "choices": ["Ratatouille", "Là-Haut", "Wall-E", "Les Indestructibles"]
@@ -208,6 +238,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Dans quel film la phrase « Pourquoi tu cours ? » est-elle culte ?",
     "answer": "OSS 117",
     "choices": ["OSS 117", "La Haine", "Le Dîner de Cons", "Intouchables"]
@@ -215,13 +246,15 @@
 
   {
     "type": "text",
-    "question": "Quel film de Denis Villeneuve met en scène des vaisseaux ovales ?",
+    "difficulty": 2,
+    "question": "Quel film de Denis Villeneuve met en scène des vaisseaux extra-terrestres ?",
     "answer": "Premier Contact",
     "choices": ["Premier Contact", "Dune", "Blade Runner 2049", "Interstellar"]
   },
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film Tom Hanks se retrouve seul sur une île ?",
     "answer": "Seul au monde",
     "choices": ["Seul au monde", "The Revenant", "Naufragé", "Into the Wild"]
@@ -229,6 +262,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Quel film français met en scène un parrain de la mafia corse ?",
     "answer": "Un prophète",
     "choices": ["Un prophète", "De battre mon cœur s’est arrêté", "Bac Nord", "Le Pacte des loups"]
@@ -236,6 +270,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film montre la chute de la bourse de 2008 avec humour noir ?",
     "answer": "The Big Short",
     "choices": ["The Big Short", "Le Loup de Wall Street", "Margin Call", "Inside Job"]
@@ -243,6 +278,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film un détective enquête sur un tueur laissant des indices mortels ?",
     "answer": "Seven",
     "choices": ["Seven", "Zodiac", "Le Silence des Agneaux", "Gone Girl"]
@@ -250,6 +286,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film d'animation met en scène une fourmilière en guerre ?",
     "answer": "Fourmiz",
     "choices": ["Fourmiz", "1001 Pattes", "Bee Movie", "Zootopie"]
@@ -257,6 +294,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film se déroule dans un hôtel isolé envahi par la folie ?",
     "answer": "Shining",
     "choices": ["Shining", "Psychose", "Get Out", "Midsommar"]
@@ -264,6 +302,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film raconte l'histoire d'un boxeur nommé Rocky Balboa ?",
     "answer": "Rocky",
     "choices": ["Rocky", "Creed", "Raging Bull", "Million Dollar Baby"]
@@ -271,6 +310,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film célèbre l'exploration spatiale avec Matthew McConaughey ?",
     "answer": "Interstellar",
     "choices": ["Interstellar", "Gravity", "The Martian", "Ad Astra"]
@@ -278,6 +318,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film trouve-t-on la chanson 'Let It Go' ?",
     "answer": "La Reine des Neiges",
     "choices": ["La Reine des Neiges", "Raiponce", "Encanto", "Cendrillon"]
@@ -285,6 +326,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film raconte la vie de Freddie Mercury ?",
     "answer": "Bohemian Rhapsody",
     "choices": ["Bohemian Rhapsody", "Rocketman", "Whiplash", "A Star Is Born"]
@@ -292,6 +334,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Quel film raconte l'histoire d'un mathématicien schizophrène ?",
     "answer": "Un homme d'exception",
     "choices": ["Un homme d'exception", "The Imitation Game", "The Social Network", "Hitchcock"]
@@ -299,13 +342,15 @@
 
   {
     "type": "text",
-    "question": "Quel film s’achève sur un totem qui tourne ?",
+    "difficulty": 2,
+    "question": "Quel film s’achève sur une toupie qui tourne ?",
     "answer": "Inception",
     "choices": ["Inception", "Shutter Island", "Tenet", "Matrix"]
   },
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film d’animation raconte l’histoire d’un robot seul sur Terre ?",
     "answer": "Wall-E",
     "choices": ["Wall-E", "Robots", "Astro Boy", "Big Hero 6"]
@@ -313,6 +358,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "De quel film vient le personnage Tony Montana ?",
     "answer": "Scarface",
     "choices": ["Scarface", "Le Parrain", "Heat", "Casino"]
@@ -320,6 +366,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Quel film de Scorsese met en scène Jordan Belfort ?",
     "answer": "Le Loup de Wall Street",
     "choices": ["Le Loup de Wall Street", "Casino", "Les Affranchis", "The Big Short"]
@@ -327,13 +374,7 @@
 
   {
     "type": "text",
-    "question": "Dans quel film peut-on voir une toupie voler au ralenti ?",
-    "answer": "Inception",
-    "choices": ["Inception", "Matrix", "Tenet", "Looper"]
-  },
-
-  {
-    "type": "text",
+    "difficulty": 2,
     "question": "Quel film oppose Batman et le Joker dans une ambiance sombre et réaliste ?",
     "answer": "The Dark Knight",
     "choices": ["The Dark Knight", "Batman Begins", "The Batman", "Justice League"]
@@ -341,6 +382,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film raconte l’histoire d’un scientifique miniaturisé dans un vaisseau ?",
     "answer": "Ant-Man",
     "choices": ["Ant-Man", "Iron Man", "Doctor Strange", "Aquaman"]
@@ -348,6 +390,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film rencontre-t-on la chanson 'Hakuna Matata' ?",
     "answer": "Le Roi Lion",
     "choices": ["Le Roi Lion", "Madagascar", "Moana", "Shrek"]
@@ -355,6 +398,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film raconte la vie d’un maître de karaté nommé Miyagi ?",
     "answer": "Karate Kid",
     "choices": ["Karate Kid", "Ip Man", "Kung Fu Panda", "Rocky"]
@@ -362,6 +406,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film un tueur porte un masque blanc sans expression ?",
     "answer": "Halloween",
     "choices": ["Halloween", "Vendredi 13", "Scream", "Saw"]
@@ -369,6 +414,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film raconte une prise d’otage dans un gratte-ciel ?",
     "answer": "Die Hard",
     "choices": ["Die Hard", "Speed", "Taken", "Mission Impossible"]
@@ -376,6 +422,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film suit la vie d’un petit poisson clown ?",
     "answer": "Le Monde de Nemo",
     "choices": ["Le Monde de Nemo", "Les Saisons", "Les Croods", "Zootopie"]
@@ -383,6 +430,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Dans quel film voit-on un milliardaire chauve dominer l’espace ?",
     "answer": "Space Jam 2",
     "choices": ["Space Jam 2", "Kingsman", "Men in Black", "Ready Player One"]
@@ -390,6 +438,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film un jouet cowboy et un astronaute deviennent amis ?",
     "answer": "Toy Story",
     "choices": ["Toy Story", "Wall-E", "Monstres & Cie", "Les Indestructibles"]
@@ -397,6 +446,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film français raconte l’amitié d’un riche tétraplégique et de son aide ?",
     "answer": "Intouchables",
     "choices": ["Intouchables", "Hors Normes", "La Famille Bélier", "Le Dîner de Cons"]
@@ -404,6 +454,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film peut-on entendre la chanson 'Eye of the Tiger' ?",
     "answer": "Rocky III",
     "choices": ["Rocky III", "Rocky", "Creed", "Top Gun"]
@@ -411,6 +462,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film raconte l'histoire d'un pirate excentrique ?",
     "answer": "Pirates des Caraïbes",
     "choices": ["Pirates des Caraïbes", "Hook", "Peter Pan", "Jack le chasseur de géants"]
@@ -418,13 +470,7 @@
 
   {
     "type": "text",
-    "question": "Quel film raconte l’histoire d’un clown tueur de dimension parallèle ?",
-    "answer": "Ça",
-    "choices": ["Ça", "Scream", "Annabelle", "The Conjuring"]
-  },
-
-  {
-    "type": "text",
+    "difficulty": 3,
     "question": "Dans quel film voit-on un détective en fauteuil roulant élucider une affaire ?",
     "answer": "Fenêtre sur cour",
     "choices": ["Fenêtre sur cour", "Shutter Island", "Seven", "Gone Girl"]
@@ -432,6 +478,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Quel film se déroule intégralement dans un ascenseur ?",
     "answer": "Devil",
     "choices": ["Devil", "Buried", "Cube", "Exam"]
@@ -439,6 +486,7 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Dans quel film un mathématicien laisse des indices dans chaque scène ?",
     "answer": "Pi",
     "choices": ["Pi", "Memento", "Shutter Island", "Enemy"]
@@ -446,6 +494,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film un homme vit dans une ville qui l’observe 24h/24 ?",
     "answer": "The Truman Show",
     "choices": ["The Truman Show", "Matrix", "Minority Report", "The Island"]
@@ -453,6 +502,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film met en scène un robot géant venu sauver la Terre ?",
     "answer": "Le Géant de Fer",
     "choices": ["Le Géant de Fer", "Transformers", "Pacific Rim", "Wall-E"]
@@ -460,6 +510,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film rencontre-t-on Tyler Durden ?",
     "answer": "Fight Club",
     "choices": ["Fight Club", "Seven", "American Psycho", "Snatch"]
@@ -467,6 +518,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Dans quel film un assassin suit un principe de karma inversé ?",
     "answer": "John Wick",
     "choices": ["John Wick", "Taken", "Equalizer", "Nobody"]
@@ -474,6 +526,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film met en scène un super-agent britannique adepte du Martini ?",
     "answer": "James Bond",
     "choices": ["James Bond", "Kingsman", "Mission Impossible", "Jason Bourne"]
@@ -481,6 +534,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film raconte la quête du Graal version comique ?",
     "answer": "Monty Python : Sacré Graal",
     "choices": ["Monty Python : Sacré Graal", "Princess Bride", "Les Visiteurs", "La Vie de Brian"]
@@ -488,6 +542,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film raconte l’histoire d’un milliardaire obsessionnel des avions ?",
     "answer": "Aviator",
     "choices": ["Aviator", "Le Loup de Wall Street", "Top Gun", "First Man"]
@@ -495,6 +550,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film met en scène un enquêteur amnésique tatoué ?",
     "answer": "Memento",
     "choices": ["Memento", "Shutter Island", "Gone Girl", "Prisoners"]
@@ -502,13 +558,15 @@
 
   {
     "type": "text",
-    "question": "Quel film montre des soldats combattant dans un désert géant ?",
+    "difficulty": 1,
+    "question": "Quel film montre des soldats et des adeptes combattant dans un désert géant ?",
     "answer": "Dune",
     "choices": ["Dune", "Mad Max", "Star Wars", "Interstellar"]
   },
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film voit-on un tueur qui utilise les 7 péchés capitaux ?",
     "answer": "Seven",
     "choices": ["Seven", "Zodiac", "Le Silence des Agneaux", "Gone Girl"]
@@ -516,6 +574,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film le héros doit choisir entre la pilule rouge et la pilule bleue ?",
     "answer": "Matrix",
     "choices": ["Matrix", "Inception", "Tenet", "Equilibrium"]
@@ -523,6 +582,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film raconte l’histoire d’un homme qui vieillit à l’envers ?",
     "answer": "Benjamin Button",
     "choices": ["Benjamin Button", "Forrest Gump", "Mr Nobody", "Her"]
@@ -530,6 +590,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Dans quel film peut-on entendre : « Je suis Groot » ?",
     "answer": "Les Gardiens de la Galaxie",
     "choices": ["Les Gardiens de la Galaxie", "Avengers", "Thor", "Eternals"]
@@ -537,6 +598,7 @@
 
   {
     "type": "text",
+    "difficulty": 1,
     "question": "Quel film met en scène les Na'vi sur Pandora ?",
     "answer": "Avatar",
     "choices": ["Avatar", "Star Trek", "Valérian", "John Carter"]
@@ -544,13 +606,7 @@
 
   {
     "type": "text",
-    "question": "Dans quel film rencontre-t-on Thanos ?",
-    "answer": "Infinity War",
-    "choices": ["Infinity War", "Endgame", "Age of Ultron", "Guardians of the Galaxy"]
-  },
-
-  {
-    "type": "text",
+    "difficulty": 2,
     "question": "Quel film français est connu pour la réplique : « C’est pas faux » ?",
     "answer": "Kaamelott",
     "choices": ["Kaamelott", "Les Visiteurs", "OSS 117", "Le Père Noël est une ordure"]
@@ -558,6 +614,7 @@
 
   {
     "type": "text",
+    "difficulty": 2,
     "question": "Quel film met en scène une ville totalement miniaturisée ?",
     "answer": "Downsizing",
     "choices": ["Downsizing", "Ant-Man", "Le Petit Prince", "Toy Story"]
@@ -565,24 +622,28 @@
 
   {
     "type": "text",
+    "difficulty": 3,
     "question": "Dans quel film Hugh Jackman incarne un magicien rival de Christian Bale ?",
     "answer": "Le Prestige",
     "choices": ["Le Prestige", "The Illusionist", "Inception", "Now You See Me"]
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question": "Dans quel film, le personnage de James Bond est-il interprété par l’acteur George Lazenby ?",
     "answer": "Au service secret de Sa Majesté",
     "choices":["Au service secret de Sa Majesté","Les diamants sont éternels","Opération Tonnerre","On ne vit que deux fois"]
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question":"Quel compositeur de musique est associé à presque toutes les productions du réalisateur Tim Burton ?",
     "answer": "Danny Elfman",
     "choices": ["Hans Zimmer","Ennio Morricone","Danny Elfman","James Horner"]
   },
   {
     "type":"image",
+    "difficulty": 1,
     "question":"Quel est le nom de ce personnage d’un film de Hayao Miyazaki ?",
     "image": "assets/images/Miyazaki.jpg",
     "answer":"Totoro",
@@ -590,6 +651,7 @@
   },
   {
     "type":"image",
+    "difficulty": 2,
     "question":"Quel film est associé à cette affiche ?",
     "image":"assets/images/orange.jpg",
     "answer": "Orange mécanique",
@@ -597,42 +659,49 @@
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question":"En quelle année est sorti au cinéma le premier volet de Star Wars sous le nom La Guerre des Étoiles ?",
     "answer":"1977",
     "choices":["1975","1977","1979","1981"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Comment s’appelle le premier film des frères Lumière en 1895 ?",
     "answer": "La Sortie de l'usine Lumière",
     "choices": ["L'arroseur arrosé","Barque sortant du port","L'arrivée d'un train à la Ciotat","La Sortie de l'usine Lumière"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Qui est le réalisateur du film français Un p’tit truc en plus sorti en 2024 ?",
     "answer":"Artus",
     "choices":["Jérémy Ferrari","Jonathan Lambert","Artus","Jarry"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Dans quel pays se déroule une partie de l'intrigue du film Kill Bill : volume 1 ?",
     "answer":"Japon",
     "choices":["Allemagne", "Italie", "Japon", "Russie"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Quel film a terminé en tête du box-office en France en 2019 avec plus de 10 millions d’entrées ?",
     "answer":"Le Roi Lion",
     "choices":["Le Roi Lion", "Star Wars VIII", "Tenet", "Pirates des Caraïbes : La Vengeance de Salazar"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Quel super-héros était de retour au cinéma en 2023 dans un film d’animation ?",
     "answer":"Spider-Man",
     "choices":["Batman","Spider-Man","Superman","Hulk"]
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/leparrain.mp3",
     "answer":"Le Parrain",
@@ -640,48 +709,56 @@
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question":"Dans combien de James Bond Daniel Craig a-t-il joué ?",
     "answer":"5",
     "choices":["5","6","7","8"]
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question":"Qui a réalisé le très célèbre Robocop de 1987",
     "answer":"Paul Verhoeven",
     "choices":["Steven Spielberg","James Cameron","Paul Verhoeven","José Padilha"]
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question":"Lequel de ces films de Spielberg est le plus ancien",
     "answer":"Duel",
     "choices":["Jurassic Park","Les Dents de la Mer","Duel","Ready Player One"]
   },
   {
     "type":"text",
+    "difficulty": 3,
     "question":"Combien de films de l'univers Marvel MCU existe-t-il à ce jour ?",
     "answer":"37",
     "choices":["29","37","41","48"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Qui incarne Katniss Everdeen ?",
     "answer":"Jennifer Lawrence",
     "choices":["Emma Watson","Emma Stone","Sidney Sweeney","Jennifer Lawrence"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Quel acteur français incarne le compte de Monte-Christo",
     "answer":"Pierre Niney",
     "choices":["Vincent Lacoste","François Civil","Pierre Niney","Xavier Dolan"]
   },
   {
     "type":"text",
+    "difficulty": 2,
     "question":"Lequel de ces films n'est pas de Stanley Kubrick",
     "answer":"La ligne rouge",
     "choices":["Lolita","Orange Mécanique","2001 L'odyssée de l'espace","La ligne rouge"]
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Avatar.mp3",
     "answer":"Avatar",
@@ -689,6 +766,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/gladiator.mp3",
     "answer":"Gladiator",
@@ -696,6 +774,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/HP.mp3",
     "answer":"Harry Potter",
@@ -703,6 +782,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 3,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/intouchable.mp3",
     "answer":"Intouchable",
@@ -710,6 +790,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/jaws.mp3",
     "answer":"Les Dents de la Mer",
@@ -717,6 +798,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/LeSeigneur.mp3",
     "answer":"Le Seigneur des Anneaux",
@@ -724,6 +806,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Pirates.mp3",
     "answer":"Pirates des Caraïbes",
@@ -731,6 +814,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 3,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Rocky.mp3",
     "answer":"Rocky III",
@@ -738,6 +822,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Time.mp3",
     "answer":"Inception",
@@ -745,6 +830,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/ValseAmelie.mp3",
     "answer":"Le Fabuleux Destin d'Amélie Poulain",
@@ -752,6 +838,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/007.mp3",
     "answer":"James Bond",
@@ -759,6 +846,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Apocalypse.mp3",
     "answer":"Apocalypse now",
@@ -766,6 +854,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Dune.mp3",
     "answer":"Dune",
@@ -773,6 +862,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 3,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/MadMax.mp3",
     "answer":"Mad Max: Fury Road",
@@ -780,6 +870,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 1,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/Mission.mp3",
     "answer":"Mission Impossible",
@@ -787,6 +878,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 3,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/ocean.mp3",
     "answer":"Ocean 12",
@@ -794,6 +886,7 @@
   },
   {
     "type":"audio",
+    "difficulty": 2,
     "question":"De quel film provient cette musique ?",
     "audio":"assets/audio/rat.mp3",
     "answer":"Ocean 12",
