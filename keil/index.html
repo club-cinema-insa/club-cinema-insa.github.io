@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STM32 Registers Cheatsheet</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-sub: #666;
+            --accent: #2980b9;
+            --code-bg: #f1f3f4;
+            --code-text: #c7254e;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --hover-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h1 { margin: 0; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; }
+        p.subtitle { margin: 10px 0 0; color: var(--text-sub); font-size: 0.95rem; }
+
+        /* Breadcrumbs */
+        #breadcrumbs {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+        .crumb { cursor: pointer; transition: color 0.2s; }
+        .crumb:hover { color: var(--accent); text-decoration: underline; }
+        .crumb::after { content: '/'; margin: 0 8px; color: #ccc; text-decoration: none; display: inline-block; }
+        .crumb:last-child { font-weight: 600; color: var(--text-main); pointer-events: none; cursor: default; }
+        .crumb:last-child::after { content: ''; }
+
+        /* Main Container */
+        #app {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Grid for Categories */
+        .grid-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 140px;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--hover-shadow);
+            border-color: rgba(41, 128, 185, 0.2);
+        }
+
+        .card h3 { margin: 0; font-size: 1.2rem; color: var(--text-main); }
+        .card span { font-size: 0.85rem; color: var(--text-sub); margin-top: 8px; }
+
+        /* Content Page Styling */
+        .content-view {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 5px;
+        }
+        .section-title:first-child { margin-top: 0; }
+
+        ul { list-style: none; padding: 0; }
+        li {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 3px solid #e0e0e0;
+            transition: border-left-color 0.2s;
+        }
+        li:hover { border-left-color: var(--accent); }
+
+        .reg-action {
+            display: block;
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .code-block {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: var(--code-bg);
+            color: var(--text-main);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+        
+        .code-reg { color: #d63384; font-weight: bold; } /* Pinkish for Register */
+        .code-val { color: #0969da; } /* Blueish for value */
+        .comment { color: #888; font-style: italic; font-size: 0.85rem; margin-left: 10px;}
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-out { opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>STM32 Registers</h1>
+        <p class="subtitle">Notes & Configuration Cheatsheet</p>
+    </header>
+
+    <div id="breadcrumbs"></div>
+    <div id="app"></div>
+
+    <script>
+        // --- 1. LES DONNÉES FORMATÉES ---
+        const db = {
+            title: "Accueil",
+            type: "category",
+            children: [
+                {
+                    title: "RCC",
+                    description: "Reset and Clock Control",
+                    type: "content",
+                    content: `
+                        <div class="section-title">Clocker les interfaces</div>
+                        <ul>
+                            <li><span class="code-block"><span class="code-reg">APBXENR</span> <span class="code-val">ADCXEN</span></span></li>
+                            <li><span class="code-block"><span class="code-reg">APBXENR</span> <span class="code-val">IOPXEN</span></span></li>
+                            <li><span class="code-block"><span class="code-reg">APBXENR</span> <span class="code-val">TIMXEN</span></span></li>
+                            <li><span class="code-block"><span class="code-reg">APBXENR</span> <span class="code-val">USARTXEN</span></span></li>
+                        </ul>
+                        
+                        <div class="section-title">Prescaler l'ADC</div>
+                        <ul>
+                            <li><span class="reg-action">Tout à 0 pour vider :</span> <span class="code-block"><span class="code-reg">CFGR</span> <span class="code-val">ADCPRE</span></span></li>
+                            <li><span class="reg-action">Pour 12MhZ :</span> <span class="code-block"><span class="code-reg">CFGR</span> <span class="code-val">ADCPRE_DIV6</span></span></li>
+                        </ul>
+                    `
+                },
+                {
+                    title: "GPIO",
+                    description: "General Purpose Input/Output",
+                    type: "content",
+                    content: `
+                        <div class="section-title">Configuration Pin 0-7</div>
+                        <ul>
+                            <li><span class="code-block"><span class="code-reg">CRL</span> <span class="code-val">CNF</span></span></li>
+                            <li><span class="code-block"><span class="code-reg">CRL</span> <span class="code-val">MODE</span></span></li>
+                        </ul>
+
+                        <div class="section-title">Configuration Pin 8-15</div>
+                        <ul>
+                            <li><span class="code-block"><span class="code-reg">CRH</span> <span class="code-val">CNF</span></span></li>
+                            <li><span class="code-block"><span class="code-reg">CRH</span> <span class="code-val">MODE</span></span></li>
+                        </ul>
+
+                        <div class="section-title">Opérations</div>
+                        <ul>
+                            <li><span class="reg-action">Pull-up / Pull-down (Input) :</span> <span class="code-block"><span class="code-reg">ODR</span></span></li>
+                            <li><span class="reg-action">Lire une entrée :</span> <span class="code-block"><span class="code-reg">IDR</span></span></li>
+                            <li><span class="reg-action">Écrire une sortie :</span> <span class="code-block"><span class="code-reg">ODR</span></span></li>
+                        </ul>
+                    `
+                },
+                {
+                    title: "TIMers",
+                    description: "Timers Généraux, PWM & Codeurs",
+                    type: "category",
+                    children: [
+                        {
+                            title: "TIMx (Général)",
+                            description: "Base de temps et interruptions",
+                            type: "content",
+                            content: `
+                                <div class="section-title">Setup durée de comptage</div>
+                                <ul>
+                                    <li><span class="reg-action">Diviseur de fréquence :</span> <span class="code-block"><span class="code-reg">PSC</span></span></li>
+                                    <li><span class="reg-action">Nombre de comptage avant reset :</span> <span class="code-block"><span class="code-reg">ARR</span></span></li>
+                                </ul>
+
+                                <div class="section-title">Contrôle</div>
+                                <ul>
+                                    <li><span class="reg-action">Valeur courante :</span> <span class="code-block"><span class="code-reg">CNT</span></span></li>
+                                    <li><span class="reg-action">Activer le timer :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">CEN</span></span></li>
+                                </ul>
+
+                                <div class="section-title">Interruptions</div>
+                                <ul>
+                                    <li><span class="reg-action">Activer :</span> <span class="code-block"><span class="code-reg">DIER</span> <span class="code-val">UIE</span></span></li>
+                                    <li><span class="reg-action">Acquitter :</span> <span class="code-block"><span class="code-reg">SR</span> <span class="code-val">UIF</span></span></li>
+                                </ul>
+                            `
+                        },
+                        {
+                            title: "TIMx (PWM)",
+                            description: "Pulse Width Modulation",
+                            type: "content",
+                            content: `
+                                <div class="section-title">Configuration Spécifique (TIM1)</div>
+                                <ul>
+                                    <li><span class="code-block"><span class="code-reg">BDTR</span> <span class="code-val">MOE</span></span></li>
+                                </ul>
+
+                                <div class="section-title">Configuration Générale</div>
+                                <ul>
+                                    <li><span class="code-block"><span class="code-reg">CCMRx</span> <span class="code-val">OCyM [110]</span></span></li>
+                                    <li><span class="reg-action">Aiguillage Output/Input :</span> <span class="code-block"><span class="code-reg">CCMRx</span> <span class="code-val">CCyS [00]/[01]</span></span></li>
+                                    <li><span class="reg-action">Calage timing :</span> <span class="code-block"><span class="code-reg">CCMRx</span> <span class="code-val">OCyPE [1]</span></span></li>
+                                </ul>
+
+                                <div class="section-title">Activation & Puissance</div>
+                                <ul>
+                                    <li><span class="reg-action">Activation physique (GPIO) :</span> <span class="code-block"><span class="code-reg">CCER</span> <span class="code-val">CCyE</span></span></li>
+                                    <li><span class="reg-action">Puissance (%) :</span> <span class="code-block"><span class="code-reg">CCRy</span> <span class="code-val">(ARR * percent) / 100</span></span></li>
+                                </ul>
+                            `
+                        },
+                        {
+                            title: "TIMx (Codeur)",
+                            description: "Gestion des signaux quadratiques",
+                            type: "content",
+                            content: `
+                                <div class="section-title">Configuration Input</div>
+                                <ul>
+                                    <li><span class="reg-action">Mode input (car signal PWM reçu) :</span> <span class="code-block"><span class="code-reg">CCMRx</span> <span class="code-val">OCyS [01]</span></span></li>
+                                </ul>
+
+                                <div class="section-title">Nettoyage CCER</div>
+                                <ul>
+                                    <li><span class="reg-action">Signaux non inversés :</span> <span class="code-block"><span class="code-reg">CCER</span> <span class="code-val">CCyP [0]</span></span></li>
+                                    <li><span class="code-block"><span class="code-reg">CCER</span> <span class="code-val">CCyNP [0]</span></span></li>
+                                </ul>
+
+                                <div class="section-title">Filtres & Comptage</div>
+                                <ul>
+                                    <li><span class="reg-action">Nettoyer filtres :</span> <span class="code-block"><span class="code-reg">CCMR1</span> <span class="code-val">ICyF [0]</span></span></li>
+                                    <li><span class="reg-action">Mode comptage max précision :</span> <span class="code-block"><span class="code-reg">SMCR</span> <span class="code-val">SMS [11]</span></span></li>
+                                </ul>
+                            `
+                        }
+                    ]
+                },
+                {
+                    title: "USART",
+                    description: "Communication Série",
+                    type: "content",
+                    content: `
+                        <div class="section-title">Configuration</div>
+                        <ul>
+                            <li><span class="reg-action">Baudrate :</span> <span class="code-block"><span class="code-reg">BRR</span> <span class="code-val">72e6 / baudrate</span></span></li>
+                            <li><span class="reg-action">Taille des mots :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">M</span></span></li>
+                            <li><span class="reg-action">Bit STOP :</span> <span class="code-block"><span class="code-reg">CR2</span> <span class="code-val">STOP</span></span></li>
+                        </ul>
+
+                        <div class="section-title">Activation</div>
+                        <ul>
+                            <li><span class="reg-action">Transfert Enable :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">TE</span></span></li>
+                            <li><span class="reg-action">Receive Enable :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">RE</span></span></li>
+                            <li><span class="reg-action">Activer l'UART :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">UE</span></span></li>
+                        </ul>
+
+                        <div class="section-title">Activer les Interruptions</div>
+                        <ul>
+                            <li><span class="reg-action">En réception :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">RXNEIE</span></span></li>
+                            <li><span class="reg-action">En émission :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">TXNE</span></span></li>
+                        </ul>
+                        <div class="section-title">Acquitter les Interruptions</div>
+                        <ul>
+                            <li><span class="reg-action">Après réception (auto read - non obligatoire) :</span> <span class="code-block"><span class="code-reg">SR</span> <span class="code-val">RXNE</span></span></li>
+                            <li><span class="reg-action">Après emission de tous ce qu'il y avait à emmettre:</span> <span class="code-block"><span class="code-reg">SR</span> <span class="code-val">TXEIE</span></span></li>
+                            <li><span class="reg-action">Méthode brute :</span> <span class="code-block"><span class="code-reg">SR</span> = <span class="code-val">0</span></span></li>
+                        </ul>
+                    `
+                },
+                {
+                    title: "ADC",
+                    description: "Analog to Digital Converter",
+                    type: "content",
+                    content: `
+                        <div class="section-title">Configuration</div>
+                        <ul>
+                            <li><span class="reg-action">Un seul élément playlist :</span> <span class="code-block"><span class="code-reg">SQR1</span> <span class="code-val">[0000]<<20</span></span></li>
+                            <li><span class="reg-action">Lier Chanel au Pin :</span> <span class="code-block"><span class="code-reg">SQR3</span> = <span class="code-val">chanel</span></span></li>
+                            <li><span class="reg-action">Trigger externe :</span> <span class="code-block"><span class="code-reg">CR2</span> <span class="code-val">EXTTRIG</span></span></li>
+                            <li><span class="reg-action">Sélection SWSTART :</span> <span class="code-block"><span class="code-reg">CR2</span> <span class="code-val">EXTSEL</span></span></li>
+                        </ul>
+
+                        <div class="section-title">Contrôle</div>
+                        <ul>
+                            <li><span class="reg-action">Allumer ADC :</span> <span class="code-block"><span class="code-reg">CR2</span> <span class="code-val">ADON</span></span></li>
+                            <li><span class="reg-action">Lancer conversion :</span> <span class="code-block"><span class="code-reg">CR2</span> <span class="code-val">SWSTART</span></span></li>
+                            <li><span class="reg-action">Lire donnée :</span> <span class="code-block"><span class="code-reg">DR</span></span></li>
+                        </ul>
+                        
+                        <div class="section-title">Interruptions</div>
+                        <ul>
+                            <li><span class="reg-action">Autoriser l'interruption Fin de Conversion :</span> <span class="code-block"><span class="code-reg">CR1</span> <span class="code-val">EOCIE</span></span></li>
+                            <li><span class="reg-action">Vérifier (SR) :</span> <span class="code-block"><span class="code-reg">SR</span> <span class="code-val">EOC</span></span></li>
+                        </ul>
+                    `
+                }
+            ]
+        };
+
+        // --- 2. LOGIQUE DU MOTEUR (Ne pas toucher) ---
+        let currentPath = [db]; 
+        const app = document.getElementById('app');
+        const breadcrumbs = document.getElementById('breadcrumbs');
+
+        function render() {
+            app.classList.add('fade-out');
+            
+            setTimeout(() => {
+                const currentData = currentPath[currentPath.length - 1];
+                app.innerHTML = '';
+                app.className = ''; // Reset classes
+
+                renderBreadcrumbs();
+
+                if (currentData.type === 'category') {
+                    app.classList.add('grid-view');
+                    currentData.children.forEach((item) => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.innerHTML = `
+                            <h3>${item.title}</h3>
+                            ${item.description ? `<span>${item.description}</span>` : ''}
+                        `;
+                        card.onclick = () => navigateTo(item);
+                        app.appendChild(card);
+                    });
+                } else {
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'content-view';
+                    contentDiv.innerHTML = `
+                        <h2 style="margin-top:0; border-bottom:1px solid #eee; padding-bottom:15px;">${currentData.title}</h2>
+                        <div>${currentData.content}</div>
+                    `;
+                    app.appendChild(contentDiv);
+                }
+                
+                app.classList.remove('fade-out');
+            }, 150);
+        }
+
+        function renderBreadcrumbs() {
+            breadcrumbs.innerHTML = '';
+            currentPath.forEach((item, index) => {
+                const span = document.createElement('span');
+                span.className = 'crumb';
+                span.innerText = item.title;
+                span.onclick = () => {
+                    if(index !== currentPath.length -1) {
+                        currentPath = currentPath.slice(0, index + 1);
+                        render();
+                    }
+                };
+                breadcrumbs.appendChild(span);
+            });
+        }
+
+        function navigateTo(item) {
+            currentPath.push(item);
+            render();
+        }
+
+        render(); // Lancement
+    </script>
+</body>
+</html>
